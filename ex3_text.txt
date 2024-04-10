@@ -1,0 +1,6 @@
+github.com/cometbft/cometbft  v0.37.4           0.37.5    go-module  GHSA-hq58-p9mv-338c  Low
+github.com/cometbft/cometbft  v0.37.4                     go-module  GHSA-555p-m4v6-cqxv  Low
+github.com/cosmos/cosmos-sdk  v0.47.10-ics-lsm            go-module  GHSA-w5w5-2882-47pc  Low
+github.com/cosmos/ibc-go/v7   v7.3.2            7.4.0     go-module  GHSA-j496-crgh-34mx  Critical
+golang.org/x/crypto           v0.16.0           0.17.0    go-module  GHSA-45x7-px36-x8w8  Medium
+google.golang.org/protobuf    v1.32.0           1.33.0    go-module  GHSA-8r3f-844c-mc37  Medium

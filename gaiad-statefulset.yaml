@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gaiad
+spec:
+  serviceName: "gaiad"
+  selector:
+    matchLabels:
+      app: gaiad
+  updateStrategy:
+    type: RollingUpdate
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: gaiad
+    spec:
+      containers:
+      - name: gaiad
+        image: <repo/tag>
+        # Resource limits(and minimum)
+        resources:
+          limits:
+            memory: 400Mi
+          requests:
+            memory: 200Mi
+        ports:
+          - containerPort: 26656
+            name: p2p
+          - containerPort: 26657
+            name: rpc
+          - containerPort: 9090
+            name: grpc
+          - containerPort: 1317
+            name: http
+        volumeMounts:
+          - name: gaiad-data
+            mountPath: /src/app
+  # Persistent volume claims for each pod. It can be done as a separate resource so all the pods could use the same one
+  volumeClaimTemplates:
+  - metadata:
+      name: gaiad-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
